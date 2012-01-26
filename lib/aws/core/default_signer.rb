@@ -55,6 +55,8 @@ module AWS
       # @param [String] digest_method The digest method to use when
       #   computing the HMAC digest.
       def sign(string_to_sign, digest_method = 'sha256')
+        puts "-------- #{string_to_sign.class.name}"
+        string_to_sign = string_to_sign.to_s
         Base64.encode64(
           OpenSSL::HMAC.digest(
             OpenSSL::Digest::Digest.new(digest_method),
